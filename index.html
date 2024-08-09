@@ -42,45 +42,16 @@
       // show the scale bar on the lower left corner
       L.control.scale({imperial: true, metric: true}).addTo(map);
 
-      if ('geolocation' in navigator) {
-    // Request the current position
-    navigator.geolocation.getCurrentPosition(
-        // Success callback
-        function(position) {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-            alert(latitude);
-            alert(longitude);
-            
-            // You can now use the latitude and longitude, for example:
-            // Send them to your server, show them on a map, etc.
-        },
-        // Error callback
-        function(error) {
-            switch(error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("User denied the request for Geolocation.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.");
-                    break;
-            }
-        },
-        // Options
-        {
-            enableHighAccuracy: true, // Use GPS if available
-            timeout: 5000,            // 5 seconds timeout
-            maximumAge: 0             // No cache
-        }
-            );
+      function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
         } else {
-            console.log("Geolocation is not supported by this browser.");
+            alert("Geolocation is not supported by this browser.");
+        }
+        }
+
+        function showPosition(position) {
+            L.marker({lon: position.coords.longitude, lat: position.coords.latitude}).bindPopup('شما اینجا هستید.').addTo(map);
         }
 
       // show a marker on the map

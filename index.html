@@ -35,7 +35,7 @@
 
       L.tileLayer('https://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png', {
             maxZoom: 18,
-            attribution: 'Map <a href="https://memomaps.de/">memomaps.de</a> <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '© Metrogo 2024 '
         }).addTo(map);
 
 
@@ -59,8 +59,7 @@
       L.marker([50.4501, 30.5234],
         {alt: 'Kyiv'}).addTo(map) // "Kyiv" is the accessible name of this marker
         .bindPopup('Kyiv, Ukraine is the birthplace of Leaflet!');
-      const element = document.getElementById("leaflet-control");
-      element.remove();
+
     </script>
   </body>
 </html>

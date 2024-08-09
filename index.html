@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    
     <style>
 
       @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap');
@@ -29,6 +31,7 @@
   </head>
   <body onload="getLocation()">
     <div id="map"></div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
       // initialize Leaflet
       var map = L.map('map').setView({lon: 0, lat: 0}, 2);
@@ -39,13 +42,16 @@
         }).addTo(map);
 
 
+
       // show the scale bar on the lower left corner
       L.control.scale({imperial: true, metric: true}).addTo(map);
       function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
               const R = 6371; // شعاع زمین بر حسب کیلومتر
               const dLat = deg2rad(lat2 - lat1);  // تبدیل اختلاف عرض جغرافیایی به رادیان
-              const dLon = deg2rad(lon2 - lon1);  // تبدیل اختلاف طول جغرافیایی به رادیان
+              const dLon = deg2rad(lon2 - lon1);
+                // تبدیل اختلاف طول جغرافیایی به رادیان
               const a = 
+
                   Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                   Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
                   Math.sin(dLon / 2) * Math.sin(dLon / 2); 
@@ -56,6 +62,7 @@
           }
 
           function deg2rad(deg) {
+
               return deg * (Math.PI / 180);
           }
 
@@ -73,7 +80,16 @@
             const lon2 = 51.37356889643178; // طول جغرافیایی مکان دوم
 
             const distance = getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, lat2, lon2);
-            alert(`فاصله: ${distance} کیلومتر`);
+            Toastify({
+
+              text: `فاصله: ${distance.toFixed(1)} کیلومتر`,
+              position: "center",
+              style: {
+                  fontfamily : "Vazirmatn",
+                },
+              duration: 3000
+
+              }).showToast();
         }
 
 

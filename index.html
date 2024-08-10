@@ -34,7 +34,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
       // initialize Leaflet
-      var map = L.map('map').setView([51.505, -0.09], 13);
+      var map = L.map('map').setView([49.650641654748455, 15.415447739573352], 3);
 
       L.tileLayer('https://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png', {
             maxZoom: 20,
@@ -85,6 +85,7 @@
             L.marker({lon: position.coords.longitude, lat: position.coords.latitude}).bindPopup('شما اینجا هستید.').addTo(map);
             const lat2 = 35.65266853613953; // عرض جغرافیایی مکان دوم
             const lon2 = 51.37356889643178; // طول جغرافیایی مکان دوم
+            L.map('map').flyto({lon: position.coords.longitude, lat: position.coords.latitude}, 14);
 
             const distance = getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, lat2, lon2);
             Toastify({
@@ -101,7 +102,7 @@
 
 
 
-
+  
 
 
       // show a marker on the map

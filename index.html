@@ -46,8 +46,8 @@
 
       // show the scale bar on the lower left corner
       L.control.scale({imperial: true, metric: true}).addTo(map);
-      map.setView([35.710325903940515, 51.39242995318679]);
-      map.setZoom(12);
+      map.flyto([35.710325903940515, 51.39242995318679]);
+
       function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
               const R = 6371; // شعاع زمین بر حسب کیلومتر
               const dLat = deg2rad(lat2 - lat1);  // تبدیل اختلاف عرض جغرافیایی به رادیان

@@ -85,7 +85,7 @@
             L.marker({lon: position.coords.longitude, lat: position.coords.latitude}).bindPopup('شما اینجا هستید.').addTo(map);
             const lat2 = 35.65266853613953; // عرض جغرافیایی مکان دوم
             const lon2 = 51.37356889643178; // طول جغرافیایی مکان دوم
-            L.map('map').flyTo({lon: position.coords.longitude, lat: position.coords.latitude}, 14);
+            map.flyTo({lon: position.coords.longitude, lat: position.coords.latitude}, 14);
 
             const distance = getDistanceFromLatLonInKm(position.coords.latitude, position.coords.longitude, lat2, lon2);
             Toastify({

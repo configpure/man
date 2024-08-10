@@ -46,7 +46,10 @@
 
       // show the scale bar on the lower left corner
       L.control.scale({imperial: true, metric: true}).addTo(map);
-      map.flyto([35.710325903940515, 51.39242995318679] , 14);
+      L.popup()
+      .setLatLng(latlng)
+      .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+      .openOn(map);
       
 
       function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
